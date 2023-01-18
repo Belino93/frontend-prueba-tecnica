@@ -6,7 +6,7 @@ import {
   createContract,
   modifyContract,
 } from "../../services/apiCalls";
-import { contractDataValidator } from "./contractDataCheck";
+import { contractDataValidator, validateBeforeSend } from "./contractDataCheck";
 
 function ModalCustom({
   functionShow,
@@ -71,21 +71,7 @@ function ModalCustom({
   };
 
   const createHandler = () => {
-    let isValid = true;
-
-    Object.values(contractDataErrors).forEach((element) => {
-      if (element !== "") {
-        isValid = false;
-      }
-    });
-
-    if (contractData.localidad === "CP no valido") {
-      isValid = false;
-    }
-
-    if (!isValid) {
-      return;
-    }
+    const isValid = validateBeforeSend(contractData,contractDataErrors)
     if (isValid) {
       createContract(contractData)
         .then((res) => {
@@ -100,18 +86,7 @@ function ModalCustom({
     return;
   };
   const updateHandler = () => {
-    let isValid = true;
-
-    Object.values(contractDataErrors).forEach((element) => {
-      if (element !== "") {
-        isValid = false;
-      }
-    });
-
-    if (contractData.localidad === "CP no valido") {
-      isValid = false;
-    }
-
+    const isValid = validateBeforeSend(contractData,contractDataErrors)
     if (isValid) {
       modifyContract(contractData, uuIdClicked)
         .then((res) => {
