@@ -37,3 +37,28 @@ export const createContract = async (contractData) => {
     return error;
   }
 };
+export const modifyContract = async (contractData, uuId) => {
+  try {
+    const body = {
+      uuid: uuId,
+      contrato: contractData,
+    };
+    const updatedContract = await axios.patch(baseUrl + "modifycontract", body);
+
+    return updatedContract;
+  } catch (error) {
+    return error;
+  }
+};
+export const checkForDeleteContract = async (uuId) => {
+  try {
+    const body = {
+      uuid: uuId,
+    };
+    const contractForDelete = await axios.patch(baseUrl + "deletecontract", body);
+
+    return contractForDelete;
+  } catch (error) {
+    return error;
+  }
+};
