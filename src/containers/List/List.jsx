@@ -29,7 +29,7 @@ function List() {
         );
         setContracts(filteredContracts);
       })
-      .catch((error) => console.log(error));
+      .catch((error) => {return});
   }, [refresh]);
 
   const deleteHandler = () => {
@@ -38,7 +38,7 @@ function List() {
         setRefresh(!refresh);
       })
       .catch((error) => {
-        console.log(error);
+        return;
       });
   };
 

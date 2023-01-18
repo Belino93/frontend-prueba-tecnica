@@ -47,7 +47,6 @@ function ModalCustom({
   const errorHandler = (e) => {
     let error = "";
     error = contractDataValidator(e.target.name, e.target.value);
-    console.log(error);
     if (error === false) {
       error = undefined;
     }
@@ -85,7 +84,6 @@ function ModalCustom({
     }
 
     if (!isValid) {
-      console.log("no creamos");
       return;
     }
     if (isValid) {
@@ -94,7 +92,7 @@ function ModalCustom({
           setRefresh(!refresh);
         })
         .catch((error) => {
-          console.log(error);
+          return
         });
       functionShow(false);
       setIsNew(false);
@@ -119,7 +117,7 @@ function ModalCustom({
         .then((res) => {
           setRefresh(!refresh);
         })
-        .catch((error) => console.log(error));
+        .catch((error) => {return});
       functionShow(false);
       setIsUpdate(false);
     }
