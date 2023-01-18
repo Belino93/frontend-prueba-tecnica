@@ -136,3 +136,17 @@ const documentValidator = (document, documentType) => {
 };
 
 
+export const validateBeforeSend = (contractData, contractDataErrors) => {
+  let isValid = true;
+    Object.values(contractDataErrors).forEach((element) => {
+      if (element !== "") {
+        return isValid = false;
+      }
+    });
+
+    if (contractData.localidad === "CP no valido" || contractData.nombre === '' || contractData.apellido1 === '' || contractData.telefono === '') {
+      return isValid = false;
+    }
+
+    return isValid
+}
