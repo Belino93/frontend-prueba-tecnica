@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 import { getContracts, checkForDeleteContract } from "../../services/apiCalls";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPencil, faTrash, faPlus } from "@fortawesome/free-solid-svg-icons";
-import ModalCustom from "../../components/Modal";
+import ModalCustom from "../../components/Modal/Modal";
 import Modal from "react-bootstrap/Modal";
 import './List.css'
 
